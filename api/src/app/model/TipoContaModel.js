@@ -1,53 +1,54 @@
-module.exports = (sequelize, DataType) => {
-    const TipoConta = sequelize.define('TipoConta', {
-        idtipoconta: {
-            type: DataType.INTEGER,
-            primaryKey: true
-        },
-        descricao: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        pagar: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        },
-        receber: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        },
-        fixo: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        },
-        idusuario: {
-            type: DataType.BIGINT,
-            allowNull: false
-        },
-        dtcadastro: {
-            type: DataType.DATE,
-            allowNull: false
-        },
-        ativo: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        }
-    }, {
-        sequelize,
-        modelName: 'TipoConta',
-        tableName: 'tipo_conta',
-        timestamps: false
-    });
+const { Model, DataTypes } = require('sequelize');
 
-    TipoConta.listar = () => {
-        return TipoConta.findAll();
+class TipoConta extends Model{
+    static load(sequelize){
+        TipoConta.init({
+            idtipoconta: {
+                type: DataTypes.INTEGER,
+                primaryKey: true
+            },
+            descricao: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            pagar: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            receber: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            fixo: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            idusuario: {
+                type: DataTypes.BIGINT,
+                allowNull: false
+            },
+            dtcadastro: {
+                type: DataTypes.DATE,
+                allowNull: false
+            },
+            ativo: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            }
+        }, {
+            sequelize,
+            modelName: 'TipoConta',
+            tableName: 'tipo_conta',
+            timestamps: false
+        });
     }
 
-    return TipoConta;
 }
+
+module.exports = TipoConta;
 
 

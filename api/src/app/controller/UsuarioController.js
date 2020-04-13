@@ -1,8 +1,8 @@
-const { models } = require('../../config/connection');
+const Usuario = require('../model/UsuarioModel');
 
 module.exports = {
     async lista(request, response) {
-        const lista = await models.Usuario.listar();
-        return response.json(lista);
+        const teste = await Usuario.findAll(); 
+        response.json(teste);
     }
 }

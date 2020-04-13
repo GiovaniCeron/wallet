@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-
-const sequelize = new Sequelize(
+let models = {};
+const connection = new Sequelize(
 	'postgres',
 	'postgres',
 	'xinforinfola',
@@ -12,14 +12,15 @@ const sequelize = new Sequelize(
 	}
 );
 
-const diretorio = path.join(__dirname, "../app/model");
-fs.readdirSync(diretorio).forEach(file =>{
-	const entidadeDir = path.join(diretorio, file);
-	const entidade = sequelize.import(entidadeDir);
+const diretorio = path.join(__dirname, '../app/model');
+fs.readdirSync(diretorio).forEach(file => {
+	const modelDir = path.join(diretorio, file);	
+	const model = require(modelDir);
+	model.load(connection);
+	models[model.name] = model;
 });
 
-//console.log(sequelize);
+console.log(models);
 
-
-module.exports = sequelize;
+module.exports = connection;
 

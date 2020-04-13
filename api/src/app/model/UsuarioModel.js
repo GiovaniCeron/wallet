@@ -1,42 +1,44 @@
-module.exports = (sequelize, DataType) => {
-    const Usuario = sequelize.define('Usuario', {
-        idusuario: {
-            type: DataType.INTEGER,
-            primaryKey: true
-        },
-        nome_usuario: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        nucpf: {
-            type: DataType.INTEGER,
-            allowNull: false
-        },
-        login: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        senha: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        dtcadastro: {
-            type: DataType.DATE,
-            allowNull: false
-        }
-    }, {
-        sequelize,
-        modelName: 'Usuario',
-        tableName: 'usuario',
-        timestamps: false
-    });
+const { Model, DataTypes } = require('sequelize');
 
-    Usuario.listar = () => {
-        return Usuario.findAll();
+class Usuario extends Model{
+    static load(sequelize){
+        super.init({
+            idusuario: {
+                type: DataTypes.INTEGER,
+                primaryKey: true
+            },
+            nome_usuario: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            nucpf: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            login: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            senha: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            dtcadastro: {
+                type: DataTypes.DATE,
+                allowNull: false
+            }
+        }, {
+            sequelize,
+            modelName: 'Usuario',
+            tableName: 'usuario',
+            timestamps: false
+        });
     }
 
-    return Usuario;
 }
+
+module.exports = Usuario;
+
 
 
 

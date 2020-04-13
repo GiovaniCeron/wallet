@@ -1,64 +1,65 @@
-module.exports = (sequelize, DataType) => {
-    const Conta = sequelize.define('Conta', {
-        idconta: {
-            type: DataType.INTEGER,
-            primaryKey: true
-        },
-        descricao: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        idtipoconta: {
-            type: DataType.BIGINT,
-            allowNull: false
-        },
-        valor: {
-            type: DataType.DECIMAL,
-            allowNull: false
-        },
-        idparcelado: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        },
-        dtcadastro: {
-            type: DataType.DATE,
-            allowNull: false
-        },
-        idusuario: {
-            type: DataType.BIGINT,
-            allowNull: false
-        },
-        idpago: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        },
-        idusuariopag: {
-            type: DataType.BIGINT,
-            allowNull: false
-        },
-        dtpagamento: {
-            type: DataType.DATE,
-            allowNull: false
-        },
-        ativo: {
-            type: DataType.BOOLEAN,
-            default: false,
-            allowNull: false
-        }
-    }, {
-        sequelize,
-        modelName: 'Teste',
-        tableName: 'teste',
-        timestamps: false
-    });
+const { Model, DataTypes } = require('sequelize');
 
-    Conta.listar = () => {
-        return Conta.findAll();
+class Conta extends Model{
+    static load(sequelize){
+        Conta.init({
+            idconta: {
+                type: DataTypes.INTEGER,
+                primaryKey: true
+            },
+            descricao: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            idtipoconta: {
+                type: DataTypes.BIGINT,
+                allowNull: false
+            },
+            valor: {
+                type: DataTypes.DECIMAL,
+                allowNull: false
+            },
+            idparcelado: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            dtcadastro: {
+                type: DataTypes.DATE,
+                allowNull: false
+            },
+            idusuario: {
+                type: DataTypes.BIGINT,
+                allowNull: false
+            },
+            idpago: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            idusuariopag: {
+                type: DataTypes.BIGINT,
+                allowNull: false
+            },
+            dtpagamento: {
+                type: DataTypes.DATE,
+                allowNull: false
+            },
+            ativo: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            }
+        }, {
+            sequelize,
+            modelName: 'Conta',
+            tableName: 'conta',
+            timestamps: false
+        });
     }
 
-    return Conta;
 }
+
+module.exports = Conta;
 
 
