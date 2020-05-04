@@ -4,7 +4,7 @@ class Usuario extends Model{
     static load(sequelize){
         super.init({
             idusuario: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.BIGINT,
                 primaryKey: true
             },
             nome_usuario: {

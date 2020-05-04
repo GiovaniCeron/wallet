@@ -3,7 +3,6 @@ create table tipo_conta (
     descricao text not null,
     pagar boolean not null default false,
     receber boolean not null default false,
-    fixo boolean not null default false,
     idusuario bigint not null,
     dtcadastro timestamp,
     ativo boolean not null default false,

@@ -1,36 +1,30 @@
 const { Model, DataTypes } = require('sequelize');
 
-class TipoConta extends Model{
+class Parcela extends Model{
     static load(sequelize){
-        TipoConta.init({
-            idtipoconta: {
+        Parcela.init({
+            idparcela: {
                 type: DataTypes.INTEGER,
                 primaryKey: true
             },
-            descricao: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            pagar: {
-                type: DataTypes.BOOLEAN,
-                default: false,
-                allowNull: false
-            },
-            receber: {
-                type: DataTypes.BOOLEAN,
-                default: false,
-                allowNull: false
-            },
-            fixo: {
-                type: DataTypes.BOOLEAN,
-                default: false,
-                allowNull: false
-            },
-            idusuario: {
+            idconta: {
                 type: DataTypes.BIGINT,
                 allowNull: false
             },
-            dtcadastro: {
+            valor: {
+                type: DataTypes.DECIMAL,
+                allowNull: false
+            },
+            dtvencimento: {
+                type: DataTypes.DATE,
+                allowNull: false
+            },
+            pago: {
+                type: DataTypes.BOOLEAN,
+                default: false,
+                allowNull: false
+            },
+            dtpagamento: {
                 type: DataTypes.DATE,
                 allowNull: false
             },
@@ -41,14 +35,14 @@ class TipoConta extends Model{
             }
         }, {
             sequelize,
-            modelName: 'TipoConta',
-            tableName: 'tipo_conta',
+            modelName: 'Parcela',
+            tableName: 'parcela',
             timestamps: false
         });
     }
 
 }
 
-module.exports = TipoConta;
+module.exports = Parcela;
 
 

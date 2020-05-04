@@ -12,7 +12,7 @@ const connection = new Sequelize(
 	}
 );
 
-const diretorio = path.join(__dirname, '../app/model');
+const diretorio = path.join(__dirname, '../model');
 fs.readdirSync(diretorio).forEach(file => {
 	const modelDir = path.join(diretorio, file);	
 	const model = require(modelDir);

@@ -1,65 +1,60 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Conta extends Model{
+class Cofrinho extends Model{
     static load(sequelize){
-        Conta.init({
-            idconta: {
-                type: DataTypes.INTEGER,
+        super.init({
+            idcofrinho: {
+                type: DataTypes.BIGINT,
                 primaryKey: true
             },
             descricao: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            idtipoconta: {
-                type: DataTypes.BIGINT,
+            valor_mensal: {
+                type: DataTypes.NUMBER,
                 allowNull: false
             },
-            valor: {
-                type: DataTypes.DECIMAL,
+            valor_guardado: {
+                type: DataTypes.NUMBER,
                 allowNull: false
             },
-            idparcelado: {
-                type: DataTypes.BOOLEAN,
-                default: false,
+            valor_juros: {
+                type: DataTypes.NUMBER,
                 allowNull: false
             },
-            dtcadastro: {
-                type: DataTypes.DATE,
+            valor_total: {
+                type: DataTypes.NUMBER,
                 allowNull: false
             },
             idusuario: {
                 type: DataTypes.BIGINT,
                 allowNull: false
             },
-            idpago: {
-                type: DataTypes.BOOLEAN,
-                default: false,
-                allowNull: false
-            },
-            idusuariopag: {
-                type: DataTypes.BIGINT,
-                allowNull: false
-            },
-            dtpagamento: {
+            dtcadastro: {
                 type: DataTypes.DATE,
                 allowNull: false
             },
             ativo: {
                 type: DataTypes.BOOLEAN,
-                default: false,
                 allowNull: false
+            },
+            idusuario_cancel: {
+                type: DataTypes.BIGINT
+            },
+            dtcancelado: {
+                type: DataTypes.DATE
             }
         }, {
             sequelize,
-            modelName: 'Conta',
-            tableName: 'conta',
+            modelName: 'Cofrinho',
+            tableName: 'cofrinho',
             timestamps: false
         });
     }
 
 }
 
-module.exports = Conta;
+module.exports = Cofrinho;
 
 
