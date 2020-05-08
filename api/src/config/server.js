@@ -4,6 +4,7 @@ const path = require('path');
 
 const app = express();
 
+require('dotenv');
 require('./connection');
 
 app.use(express.json());
