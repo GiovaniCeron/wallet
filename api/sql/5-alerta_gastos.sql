@@ -2,6 +2,7 @@ create table alerta_gastos (
     idalerta bigserial,
     descricao text not null,
     tpalerta character(1) default 'M' not null,
+    valor numeric(17,2) not null,
     idusuario bigint not null,
     dtcadastro timestamp not null,
     ativo boolean not null default false,
