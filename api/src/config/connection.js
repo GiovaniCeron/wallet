@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 let models = {};
 const connection = new Sequelize(
-	'postgres',
+	'walletdb',
 	'postgres',
 	'xinforinfola',
 	{
